@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">PodBattery</string>
-    <string name="channel_pod_battery">에어팟 배터리</string>
+    <string name="channel_pod_battery">Pod 배터리</string>
 </resources>

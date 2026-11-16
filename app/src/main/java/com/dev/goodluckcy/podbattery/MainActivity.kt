@@ -109,7 +109,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         }
 
         Text(
-            "에어팟이 연결되면 자동으로 시작되고, 잠금화면 알림에 배터리가 표시됩니다.",
+            "Pod이 연결되면 자동으로 시작되고, 잠금화면 알림에 배터리가 표시됩니다.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -121,7 +121,7 @@ private fun StatusCard(status: PodsStatus?, monitoring: Boolean) {
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(Modifier.padding(20.dp)) {
             Text(
-                text = status?.model ?: if (monitoring) "에어팟에 연결하는 중…" else "모니터링 꺼짐",
+                text = status?.model ?: if (monitoring) "Pod에 연결하는 중…" else "모니터링 꺼짐",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold,
             )
@@ -162,7 +162,7 @@ private fun BatteryItem(label: String, value: Int?, charging: Boolean) {
 private fun StatusCardPreview() {
     PodBatteryTheme {
         StatusCard(
-            PodsStatus("AirPods Pro (2세대)", 80, 90, 50, false, false, true),
+            PodsStatus("Pod", 80, 90, 50, false, false, true),
             monitoring = true,
         )
     }

@@ -103,7 +103,8 @@ class PodMonitorService : Service() {
         val previousCase = lastStatus?.case
         val caseStale = battery.case == null && previousCase != null
         val status = PodsStatus(
-            model = target.name ?: "AirPods",
+            // 사용자가 붙인 기기 이름을 그대로 보여주고, 없을 때만 기본 이름을 쓴다.
+            model = target.name ?: DEFAULT_NAME,
             left = battery.left,
             right = battery.right,
             case = battery.case ?: previousCase,
@@ -150,6 +151,7 @@ class PodMonitorService : Service() {
 
     companion object {
         private const val TAG = "PodMonitorService"
+        private const val DEFAULT_NAME = "Pod"
         private const val MAX_RETRIES = 3
         private const val RETRY_DELAY_MS = 3_000L
         const val ACTION_STOP = "com.dev.goodluckcy.podbattery.action.STOP"
