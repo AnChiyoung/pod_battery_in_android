@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pod_card_bg">#F21C1C1E</color>
+    <color name="pod_text">#FFFFFFFF</color>
+    <color name="pod_text_secondary">#FFAEAEB2</color>
+    <color name="pod_track">#FF3A3A3C</color>
+</resources>

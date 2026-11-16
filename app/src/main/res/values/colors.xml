@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 알림 카드. 잠금화면 알림이 투명해도 읽히도록 불투명 배경을 직접 깐다. -->
+    <color name="pod_card_bg">#F2FFFFFF</color>
+    <color name="pod_text">#FF1C1C1E</color>
+    <color name="pod_text_secondary">#FF6E6E73</color>
+    <color name="pod_track">#FFE5E5EA</color>
+</resources>
