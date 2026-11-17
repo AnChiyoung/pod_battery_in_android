@@ -26,7 +26,6 @@ private data class Library(val name: String, val copyright: String)
 private val libraries = listOf(
     Library("AndroidX (Core, Activity, Lifecycle, Compose, Material 3)", "Copyright The Android Open Source Project"),
     Library("Kotlin Standard Library, kotlinx.coroutines", "Copyright JetBrains s.r.o. and Kotlin Programming Language contributors"),
-    Library("HiddenApiBypass", "Copyright LSPosed"),
 )
 
 @Composable
