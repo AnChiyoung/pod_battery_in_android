@@ -41,9 +41,12 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            // 키가 없을 때 -PdebugSignRelease를 주면 디버그 키로 서명해 기기에서 릴리스 빌드를 시험할 수 있다(스토어 업로드용 아님).
-            signingConfig = signingConfigs.findByName("upload")
-                ?: if (project.hasProperty("debugSignRelease")) signingConfigs.getByName("debug") else null
+            // -PdebugSignRelease를 주면 업로드 키 대신 디버그 키로 서명해 기기에서 릴리스 빌드를 시험할 수 있다(스토어 업로드용 아님).
+            signingConfig = if (project.hasProperty("debugSignRelease")) {
+                signingConfigs.getByName("debug")
+            } else {
+                signingConfigs.findByName("upload")
+            }
         }
     }
     compileOptions {
