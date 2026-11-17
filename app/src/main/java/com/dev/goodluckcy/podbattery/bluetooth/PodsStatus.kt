@@ -1,7 +1,7 @@
 package com.dev.goodluckcy.podbattery.bluetooth
 
 /**
- * 에어팟 한 쌍의 배터리 상태. 배터리 값은 0~100(10% 단위), 알 수 없으면 null.
+ * 에어팟 한 쌍의 배터리 상태. 배터리 값은 0~100(%), 알 수 없으면 null.
  */
 data class PodsStatus(
     val model: String,
@@ -11,10 +11,10 @@ data class PodsStatus(
     val leftCharging: Boolean,
     val rightCharging: Boolean,
     val caseCharging: Boolean,
-    /** 케이스 값이 이번에 받은 게 아니라 마지막으로 확인한 값인지. 이어폰이 케이스 밖에 있으면 케이스 배터리가 오지 않는다. */
-    val caseStale: Boolean = false,
+    /** 이 값을 받은 시각(epoch ms). */
+    val updatedAt: Long = 0L,
 ) {
-    /** 왼쪽/오른쪽 중 낮은 값. 잠금화면 칩처럼 짧게 보여줄 때 사용. */
-    val lowestPod: Int?
-        get() = listOfNotNull(left, right).minOrNull()
+    /** 시각을 뺀 배터리 내용이 같은지. 같은 광고가 연달아 올 때 알림을 다시 그리지 않으려고 쓴다. */
+    fun sameReadingAs(other: PodsStatus?): Boolean =
+        other != null && copy(updatedAt = 0L) == other.copy(updatedAt = 0L)
 }
