@@ -23,6 +23,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,6 +40,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.dev.goodluckcy.podbattery.bluetooth.PodsStatus
 import com.dev.goodluckcy.podbattery.data.PodStatusRepository
 import com.dev.goodluckcy.podbattery.service.PodMonitorService
+import com.dev.goodluckcy.podbattery.ui.LicensesDialog
 import com.dev.goodluckcy.podbattery.ui.theme.PodBatteryTheme
 
 class MainActivity : ComponentActivity() {
@@ -113,6 +115,16 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+
+        Spacer(Modifier.weight(1f))
+        var showLicenses by remember { mutableStateOf(false) }
+        TextButton(
+            onClick = { showLicenses = true },
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+        ) {
+            Text("오픈소스 라이선스", style = MaterialTheme.typography.bodySmall)
+        }
+        if (showLicenses) LicensesDialog(onDismiss = { showLicenses = false })
     }
 }
 
